@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.example.geeks",
+    "sha256_cert_fingerprints":
+    ["0E:40:1F:9D:C9:1C:C3:1E:9C:27:A7:63:B7:8E:DA:77:C4:F3:F6:4E:D2:14:28:3F:26:72:76:CE:88:67:D7:CE"]
+  }
+}]
