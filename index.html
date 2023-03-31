@@ -1,9 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>This is the title of the webpage!</title>
+  <title>My iframe page</title>
 </head>
 <body>
-<p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
+  <h1>Welcome to my iframe page</h1>
+  <p>Click the button below to trigger the callback:</p>
+  <button onclick="window.parent.postMessage('myapp://callback', '*')">Trigger Callback</button>
 </body>
 </html>
