@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My iframe page</title>
+  <title>Sample page</title>
 </head>
 <body>
-  <h1>Welcome to my iframe page</h1>
-  <p>Click the button below to trigger the callback filssss:</p>
-  <button onclick="window.parent.postMessage('https://pub.dev/packages/webview_flutter/example', '*')">Trigger Callback</button>
   
   <h1>HTML Callback</h1>  
-  <a href="https://nithinfrancis.github.io/dashboard/dashboard.html" target="_blank">Link to Example</a>
-  
-  
-  <button onclick="window.callbackHandler.postMessage('Hello from JavaScript!')">Click me To JavaScript Callback </button>
+  <button href="https://nithinfrancis.github.io/dashboard/dashboard.html" target="_blank">Click me To HTML Callback </button>
 
+  <h1>Javascript Callback</h1>  
+  <button onclick="window.callbackHandler.postMessage('Hello from JavaScript!')">Click me To JavaScript Callback </button>
 
 </body>
 </html>
