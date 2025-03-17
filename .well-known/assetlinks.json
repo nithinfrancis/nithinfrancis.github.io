@@ -1,9 +1,11 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.app.aryashakti",
-    "sha256_cert_fingerprints":
-    ["ED:F8:F4:DC:EA:A3:9A:40:28:6A:66:1B:EB:DA:C2:C3:05:3B:CC:3B:BD:DD:29:C0:E8:A3:A0:2F:B7:2B:8D:9A"]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.app.aryashakti",
+      "sha256_cert_fingerprints":
+        ["ED:F8:F4:DC:EA:A3:9A:40:28:6A:66:1B:EB:DA:C2:C3:05:3B:CC:3B:BD:DD:29:C0:E8:A3:A0:2F:B7:2B:8D:9A"]
+    }
   }
-}]
+]
