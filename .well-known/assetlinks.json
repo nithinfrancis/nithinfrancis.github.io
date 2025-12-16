@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.arya.marketplace",
+      "package_name": "arya.ag",
       "sha256_cert_fingerprints":
         ["5E:32:1E:7E:CF:01:EE:75:16:37:0B:F7:2B:07:4C:6C:29:5C:5D:41:D0:3B:2C:44:47:40:59:26:E0:B7:2B:60"]
     }
