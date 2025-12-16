@@ -3,9 +3,9 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.app.aryashakti",
+      "package_name": "com.arya.marketplace",
       "sha256_cert_fingerprints":
-        ["ED:F8:F4:DC:EA:A3:9A:40:28:6A:66:1B:EB:DA:C2:C3:05:3B:CC:3B:BD:DD:29:C0:E8:A3:A0:2F:B7:2B:8D:9A"]
+        ["5E:32:1E:7E:CF:01:EE:75:16:37:0B:F7:2B:07:4C:6C:29:5C:5D:41:D0:3B:2C:44:47:40:59:26:E0:B7:2B:60"]
     }
   }
 ]
