@@ -1,10 +1,26 @@
 {
-  "applinks":{
-      "details":[
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "NCYT7Z9K72.com.arya.marketplace"
+        ],
+        "paths": [
+          "*"
+        ],
+        "components": [
           {
-              "appID": "NCYT7Z9K72.com.arya.marketplace",
-              "paths": ["/??"]
+            "/": "/*"
           }
-      ]
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "NCYT7Z9K72.com.arya.marketplace"
+    ]
   }
 }
+
