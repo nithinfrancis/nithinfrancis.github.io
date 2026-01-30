@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 <html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Nithin Francis Portfolio | Apple Style Edition</title>
+<title>Nithin Francis Portfolio | Senior Flutter Developer</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -58,6 +57,13 @@
         .apple-button {
             @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
         }
+        .timeline-line {
+            @apply absolute left-[5px] top-2 bottom-0 w-[2px];
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.02) 80%, transparent 100%);
+        }
+        .timeline-dot {
+            @apply absolute left-0 top-1.5 w-[12px] h-[12px] rounded-full border-2 border-white bg-apple-black z-10;
+        }
     </style>
 </head>
 <body>
@@ -66,7 +72,7 @@
 <a class="px-5 py-2 text-[13px] font-medium hover:bg-black/5 rounded-full transition-colors" href="#">Home</a>
 <a class="px-5 py-2 text-[13px] font-medium hover:bg-black/5 rounded-full transition-colors" href="#about">About</a>
 <a class="px-5 py-2 text-[13px] font-medium hover:bg-black/5 rounded-full transition-colors" href="#experience">Experience</a>
-<a class="px-5 py-2 text-[13px] font-medium hover:bg-black/5 rounded-full transition-colors" href="#projects">Projects</a>
+<a class="px-5 py-2 text-[13px] font-medium hover:bg-black/5 rounded-full transition-colors" href="#articles">Articles</a>
 <a class="px-5 py-2 text-[13px] font-medium bg-apple-black text-white rounded-full transition-opacity hover:opacity-90" href="#contact">Contact</a>
 </div>
 </nav>
@@ -79,14 +85,14 @@
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
 </span>
-                        Available for leadership
-                    </div>
+                    Available for leadership
+                </div>
 <h1 class="text-6xl md:text-8xl font-extrabold tight-tracking leading-[1.05] text-apple-black">
-                        Senior Flutter <br/>Engineer.
-                    </h1>
+                    Senior Flutter <br/>Engineer.
+                </h1>
 <p class="text-xl md:text-2xl text-apple-black/60 max-w-2xl leading-relaxed font-normal mx-auto lg:mx-0">
-                        Architecting high-performance mobile ecosystems with the precision of a master watchmaker. Expert in technical leadership and scalable Flutter products.
-                    </p>
+                    Architecting high-performance mobile ecosystems with the precision of a master watchmaker. Expert in technical leadership and scalable Flutter products.
+                </p>
 <div class="flex flex-wrap justify-center lg:justify-start gap-4">
 <a class="apple-button bg-apple-black text-white px-8" href="#projects">View Projects</a>
 <a class="apple-button glass border border-black/10 text-apple-black px-8" href="#">Download CV</a>
@@ -136,8 +142,8 @@
 <div class="text-center mb-24 max-w-3xl mx-auto">
 <h2 class="text-4xl md:text-5xl font-extrabold tight-tracking mb-8">Engineering with purpose.</h2>
 <p class="text-xl text-apple-black/50 leading-relaxed font-medium">
-                        I architect scalable mobile systems that empower global businesses. My approach combines technical precision with Apple's design philosophy: simplicity is the ultimate sophistication.
-                    </p>
+                    I architect scalable mobile systems that empower global businesses. My approach combines technical precision with Apple's design philosophy: simplicity is the ultimate sophistication.
+                </p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="bento-card p-12 text-center">
@@ -157,36 +163,117 @@
 </section>
 <section class="py-32 px-6 bg-apple-gray" id="experience">
 <div class="max-w-4xl mx-auto">
-<h2 class="text-xs font-bold uppercase tracking-[0.3em] mb-16 text-center text-apple-black/40">Professional Timeline</h2>
-<div class="space-y-12">
-<div class="bento-card p-10 flex flex-col md:flex-row gap-8 items-start">
-<div class="md:w-1/3">
-<span class="text-apple-blue font-bold text-sm tracking-tight block mb-1">2022 — Present</span>
-<h3 class="text-2xl font-extrabold tight-tracking">Senior Developer</h3>
-<p class="text-apple-black/40 font-semibold text-sm">Arya.ag</p>
+<div class="mb-16">
+<h2 class="text-5xl font-extrabold tight-tracking text-apple-black mb-2">Employment History</h2>
+<p class="text-apple-black/40 font-semibold uppercase tracking-widest text-sm">Professional Journey</p>
 </div>
-<div class="md:w-2/3">
-<p class="text-apple-black/60 leading-relaxed text-lg font-medium">
-                                Leading the core engineering of India's largest agritech platform. Focus on offline-first architecture and enterprise-grade Flutter systems for 1M+ users.
+<div class="relative pl-6 sm:pl-10">
+<div class="timeline-line"></div>
+<div class="relative mb-20 group">
+<div class="timeline-dot"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-12 pl-8 md:pl-12">
+<div class="md:col-span-4">
+<p class="text-apple-black/40 font-bold text-xs uppercase tracking-widest mb-1.5">Jun 2022 – Present</p>
+<h3 class="text-2xl font-bold tight-tracking text-apple-black leading-tight mb-1">SDE III</h3>
+<p class="text-apple-black/60 font-semibold text-lg">Arya.ag</p>
+</div>
+<div class="md:col-span-8">
+<div class="flex items-center gap-1.5 text-apple-black/40 font-bold text-xs mb-3 uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Noida, Uttar Pradesh
+                            </div>
+<p class="text-apple-black/60 leading-relaxed text-[17px] font-normal">
+                                Leading core engineering for India's premier agritech platform. Architecting enterprise-grade Flutter systems with a focus on high-scale, offline-first reliability for over 1M+ users.
                             </p>
 </div>
 </div>
-<div class="bento-card p-10 flex flex-col md:flex-row gap-8 items-start">
-<div class="md:w-1/3">
-<span class="text-apple-black/40 font-bold text-sm tracking-tight block mb-1">2021 — 2022</span>
-<h3 class="text-2xl font-extrabold tight-tracking">Flutter Developer</h3>
-<p class="text-apple-black/40 font-semibold text-sm">Uable</p>
 </div>
-<div class="md:w-2/3">
-<p class="text-apple-black/60 leading-relaxed text-lg font-medium">
-                                Developed high-fidelity social features for Gen-Z users. Implemented real-time interactive UI and complex animation systems using Flutter.
+<div class="relative mb-20 group">
+<div class="timeline-dot"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-12 pl-8 md:pl-12">
+<div class="md:col-span-4">
+<p class="text-apple-black/40 font-bold text-xs uppercase tracking-widest mb-1.5">Jan 2022 – May 2022</p>
+<h3 class="text-2xl font-bold tight-tracking text-apple-black leading-tight mb-1">Software Engineer</h3>
+<p class="text-apple-black/60 font-semibold text-lg">Uable</p>
+</div>
+<div class="md:col-span-8">
+<div class="flex items-center gap-1.5 text-apple-black/40 font-bold text-xs mb-3 uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Bangalore, Karnataka
+                            </div>
+<p class="text-apple-black/60 leading-relaxed text-[17px] font-normal mb-4">
+                                Engineered interactive social features for a Gen-Z educational platform. Focused on complex UI animations and real-time community tools.
                             </p>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-[10px] font-bold text-apple-black/40 uppercase tracking-widest border border-black/5">
+                                Note: The startup ceased operations
+                            </div>
+</div>
+</div>
+</div>
+<div class="relative mb-20 group">
+<div class="timeline-dot"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-12 pl-8 md:pl-12">
+<div class="md:col-span-4">
+<p class="text-apple-black/40 font-bold text-xs uppercase tracking-widest mb-1.5">Aug 2020 – Dec 2021</p>
+<h3 class="text-2xl font-bold tight-tracking text-apple-black leading-tight mb-1">Software Engineer</h3>
+<p class="text-apple-black/60 font-semibold text-lg">Geeks.ae</p>
+</div>
+<div class="md:col-span-8">
+<div class="flex items-center gap-1.5 text-apple-black/40 font-bold text-xs mb-3 uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Dubai, UAE
+                            </div>
+<p class="text-apple-black/60 leading-relaxed text-[17px] font-normal">
+                                Contributed to the development of on-demand tech support services. Integrated robust cross-platform mobile solutions to streamline service delivery in the UAE market.
+                            </p>
+</div>
+</div>
+</div>
+<div class="relative group">
+<div class="timeline-dot"></div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-12 pl-8 md:pl-12">
+<div class="md:col-span-4">
+<p class="text-apple-black/40 font-bold text-xs uppercase tracking-widest mb-1.5">Jul 2019 – Jul 2020</p>
+<h3 class="text-2xl font-bold tight-tracking text-apple-black leading-tight mb-1">Associate Software Engineer</h3>
+<p class="text-apple-black/60 font-semibold text-lg">Innovature Labs</p>
+</div>
+<div class="md:col-span-8">
+<div class="flex items-center gap-1.5 text-apple-black/40 font-bold text-xs mb-3 uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Kerala, India
+                            </div>
+<p class="text-apple-black/60 leading-relaxed text-[17px] font-normal">
+                                Began the engineering journey focusing on full-stack web and mobile paradigms. Developed foundational expertise in Flutter and modern development workflows.
+                            </p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="py-32 px-6 bg-white" id="projects">
+<section class="py-32 px-6 bg-white" id="recognition">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16">
+<span class="text-apple-blue font-bold tracking-tight text-sm">Achievements</span>
+<h2 class="text-5xl font-extrabold tight-tracking text-apple-black mt-2">Recognition.</h2>
+</div>
+<div class="w-full bento-card p-10 md:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-14">
+<div class="flex-shrink-0 size-32 md:size-40 rounded-3xl bg-apple-gray flex items-center justify-center">
+<span class="material-symbols-outlined text-apple-black text-7xl font-light">emoji_events</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-apple-blue/10 text-apple-blue text-[10px] font-bold uppercase tracking-widest mb-6">
+                        Smart India Hackathon 2018
+                    </div>
+<h3 class="text-4xl md:text-5xl font-extrabold tight-tracking text-apple-black mb-6">First Runner-Up</h3>
+<p class="text-xl md:text-2xl text-apple-black/50 leading-relaxed font-medium max-w-4xl">
+                        Awarded by the Government of India (i4cc) for groundbreaking innovation in water conservation through digital ecosystems.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 bg-apple-gray" id="projects">
 <div class="max-w-7xl mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
 <div class="space-y-4">
@@ -207,7 +294,7 @@
 <h3 class="text-3xl font-extrabold tight-tracking mb-4">Arya.ag Platform</h3>
 <p class="text-apple-black/50 text-lg mb-8 leading-relaxed font-medium">Supply chain management for 1M+ users. Complex state handling and large-scale data synchronization with an offline-first approach.</p>
 <a class="inline-flex items-center gap-2 text-apple-blue font-bold text-sm hover:underline" href="#">
-                                Explore Case Study <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            Explore Case Study <span class="material-symbols-outlined text-base">arrow_forward</span>
 </a>
 </div>
 </div>
@@ -223,10 +310,58 @@
 <h3 class="text-3xl font-extrabold tight-tracking mb-4">Uable Social</h3>
 <p class="text-apple-black/50 text-lg mb-8 leading-relaxed font-medium">Interactive learning platform for teenagers. Focused on real-time community engagement and fluid 60fps UI experiences.</p>
 <a class="inline-flex items-center gap-2 text-apple-blue font-bold text-sm hover:underline" href="#">
-                                View Live <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            View Live <span class="material-symbols-outlined text-base">arrow_forward</span>
 </a>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section class="py-32 px-6 bg-white" id="articles">
+<div class="max-w-7xl mx-auto">
+<div class="mb-12">
+<span class="text-apple-blue font-bold tracking-tight text-sm">Knowledge Sharing</span>
+<h2 class="text-5xl md:text-6xl font-extrabold tight-tracking text-apple-black mt-4">Articles &amp; Thought Leadership.</h2>
+</div>
+<div class="max-w-4xl">
+<a class="block group" href="https://medium.com/@nithin00francis/flutter-performance-the-real-cost-of-shrinkwrap-af4a32299280" target="_blank">
+<div class="bento-card overflow-hidden flex flex-col md:flex-row items-stretch md:h-[220px]">
+<div class="md:w-[180px] bg-apple-black relative overflow-hidden flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-gradient-to-br from-apple-blue/20 to-transparent"></div>
+<div class="relative z-10 flex flex-col items-center gap-2">
+<div class="flex items-end gap-0.5 h-10">
+<div class="w-1.5 bg-white/20 h-1/4 rounded-t-sm"></div>
+<div class="w-1.5 bg-white/40 h-2/4 rounded-t-sm"></div>
+<div class="w-1.5 bg-white/60 h-3/4 rounded-t-sm"></div>
+<div class="w-1.5 bg-white h-full rounded-t-sm animate-pulse"></div>
+<div class="w-1.5 bg-white/40 h-1/2 rounded-t-sm"></div>
+</div>
+<span class="material-symbols-outlined text-white text-2xl opacity-80">speed</span>
+</div>
+<div class="absolute bottom-2 left-0 right-0 border-t border-white/10 pt-1.5">
+<p class="text-[7px] font-mono text-white/40 uppercase tracking-widest text-center">Optimization / Rendering</p>
+</div>
+</div>
+<div class="flex-1 p-6 md:px-8 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-2">
+<img alt="Medium" class="size-3 opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpLxxBatzZKxbAfXd1FrUiRitILah0Fzs_b9HKvBuNtxJWbb5yElTWXfEarwzfST2N8Jn6inVyk8xI48a6Q53zYFQQqbEgcZbLExb5UBJgGfM9wH6WWcjZwh4uPdvkdqFAHj-91C34tKSTDnhhNvqg651yy5dAVSKPGZnaQOcJ8SlStQwqCVuHrZQh_33aQVQTaJp2pCZ53iDFLfOQkcxXjW5W_-0VmspD06_hAenu23Njle5IWqiXxMoV3SZS-w01pWLyCgrLVbb5"/>
+<span class="text-apple-black/40 font-bold text-[9px] uppercase tracking-widest">Published on Medium</span>
+</div>
+<h3 class="text-xl md:text-2xl font-extrabold tight-tracking text-apple-black mb-2 leading-tight group-hover:text-apple-blue transition-colors">
+                                Flutter Performance: The Real Cost of shrinkWrap
+                            </h3>
+<p class="text-apple-black/50 text-sm mb-4 leading-relaxed font-medium line-clamp-1">
+                                ScrollView performance is critical. Dive deep into layout constraints and high-performance alternatives.
+                            </p>
+<div class="flex items-center">
+<div class="apple-button bg-apple-black text-white px-5 py-2 text-[11px] group-hover:bg-apple-blue transition-colors h-auto">
+                                    Read on Medium
+                                    <span class="material-symbols-outlined text-[12px]">open_in_new</span>
+</div>
+</div>
+</div>
+</div>
+</a>
 </div>
 </div>
 </section>
@@ -237,7 +372,7 @@
 <h3 class="text-5xl font-extrabold tight-tracking">Core Stack.</h3>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bento-card p-10 space-y-8 bg-white/40">
+<div class="bento-card p-10 space-y-8 bg-white/40 border-apple-black/5">
 <div class="size-14 rounded-2xl glass-dark flex items-center justify-center">
 <span class="material-symbols-outlined text-white text-3xl font-light">smartphone</span>
 </div>
@@ -248,7 +383,7 @@
 <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-apple-blue rounded-full"></span> Kotlin / Swift</li>
 </ul>
 </div>
-<div class="bento-card p-10 space-y-8 bg-white/40">
+<div class="bento-card p-10 space-y-8 bg-white/40 border-apple-black/5">
 <div class="size-14 rounded-2xl glass-dark flex items-center justify-center">
 <span class="material-symbols-outlined text-white text-3xl font-light">account_tree</span>
 </div>
@@ -259,7 +394,7 @@
 <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-apple-blue rounded-full"></span> Domain Driven Design</li>
 </ul>
 </div>
-<div class="bento-card p-10 space-y-8 bg-white/40">
+<div class="bento-card p-10 space-y-8 bg-white/40 border-apple-black/5">
 <div class="size-14 rounded-2xl glass-dark flex items-center justify-center">
 <span class="material-symbols-outlined text-white text-3xl font-light">database</span>
 </div>
@@ -273,25 +408,6 @@
 </div>
 </div>
 </section>
-<section class="py-32 px-6">
-<div class="max-w-7xl mx-auto">
-<div class="bento-card bg-apple-black text-white p-12 md:p-20 relative overflow-hidden group">
-<div class="absolute right-[-5%] top-[-10%] opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-1000">
-<span class="material-symbols-outlined text-[30rem]">award_star</span>
-</div>
-<div class="relative z-10 flex flex-col md:flex-row items-center gap-16">
-<div class="size-40 glass border border-white/20 rounded-apple-lg flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-7xl text-white">military_tech</span>
-</div>
-<div class="text-center md:text-left">
-<span class="text-apple-blue font-bold text-xs uppercase tracking-[0.3em] block mb-4">Recognition</span>
-<h2 class="text-4xl md:text-6xl font-extrabold tight-tracking mb-6">Smart India Hackathon 2022</h2>
-<p class="text-white/60 text-xl font-medium max-w-2xl">National Winner. Recognized by the Government of India for developing a blockchain-powered fintech solution using Flutter and BLoC architecture.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
 <footer class="pt-40 pb-20 px-6 bg-white" id="contact">
 <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
 <h2 class="text-6xl md:text-9xl font-extrabold tight-tracking text-apple-black mb-12">Let's build<br/><span class="text-apple-black/20">something great.</span></h2>
@@ -299,8 +415,8 @@
 <div class="flex flex-col md:flex-row items-center gap-6 mb-32">
 <a class="apple-button bg-apple-black text-white px-12 py-5 text-lg" href="mailto:contact@nithin.dev">
 <span class="material-symbols-outlined">mail</span>
-                        Work with me
-                    </a>
+                    Work with me
+                </a>
 <div class="flex items-center gap-4">
 <a class="size-14 glass-dark rounded-full flex items-center justify-center transition-transform hover:-translate-y-1" href="#">
 <img alt="LinkedIn" class="w-6 h-6 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBNlmJwmIpybCKOXgcvfSF1Tns6pD8lh_CxgahWPE7lGjTebBODvX0tsTe0ujnxkd35tQutpWSf1RNyGs2gCw2XmMcBHWPCCV0aNrDFb7v1SaCcZxJfDhiL-_2Way5J2cgk-rFbosftdHGU4fuHCOMaJdyRlcjtVrkZ6Lwi-4AM2YscF9rukpr5T6kNXL1kihwt6LbGlh-5GppLX1vJFkJd7yGjmTdkHTOpU3GfGxzqan6Fr28LB-iHFsP7X_cy5-enakusWwFdXPI"/>
