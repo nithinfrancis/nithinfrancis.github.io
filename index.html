@@ -159,44 +159,53 @@
 <span>Call</span>
 </a>
 
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+      <div class="flex flex-wrap justify-center lg:justify-start gap-4">
 
   <!-- Email -->
-  <div class="copy-pill group cursor-pointer"
-       onclick="navigator.clipboard.writeText('nithin@example.com')">
-    <span class="material-symbols-outlined text-apple-black/40 text-[18px]">mail</span>
+  <div class="copy-pill flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 bg-white shadow-sm">
+    
+    <span class="material-symbols-outlined text-apple-black/40 text-[18px]">
+      mail
+    </span>
+
     <span class="text-[14px] font-medium text-apple-black/80">
       nithin@example.com
     </span>
-    <div class="ml-2 pl-3 border-l border-black/10 flex items-center gap-1.5">
-      <span class="material-symbols-outlined text-[16px] text-apple-blue opacity-0 group-hover:opacity-100 transition-opacity">
+
+    <!-- Copy Button -->
+    <button 
+      onclick="navigator.clipboard.writeText('nithin@example.com')"
+      class="ml-2 p-1.5 rounded-full hover:bg-black/5 transition">
+      <span class="material-symbols-outlined text-[16px] text-apple-blue">
         content_copy
       </span>
-      <span class="text-[11px] font-bold uppercase tracking-wider text-apple-blue opacity-60 group-hover:opacity-100 transition-opacity">
-        Copy
-      </span>
-    </div>
+    </button>
+
   </div>
 
   <!-- Phone -->
-  <div class="copy-pill group cursor-pointer"
-       onclick="navigator.clipboard.writeText('+91 98765 43210')">
-    <span class="material-symbols-outlined text-apple-black/40 text-[18px]">call</span>
+  <div class="copy-pill flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 bg-white shadow-sm">
+    
+    <span class="material-symbols-outlined text-apple-black/40 text-[18px]">
+      call
+    </span>
+
     <span class="text-[14px] font-medium text-apple-black/80">
       +91 98765 43210
     </span>
-    <div class="ml-2 pl-3 border-l border-black/10 flex items-center gap-1.5">
-      <span class="material-symbols-outlined text-[16px] text-apple-blue opacity-0 group-hover:opacity-100 transition-opacity">
+
+    <!-- Copy Button -->
+    <button 
+      onclick="navigator.clipboard.writeText('+91 98765 43210')"
+      class="ml-2 p-1.5 rounded-full hover:bg-black/5 transition">
+      <span class="material-symbols-outlined text-[16px] text-apple-blue">
         content_copy
       </span>
-      <span class="text-[11px] font-bold uppercase tracking-wider text-apple-blue opacity-60 group-hover:opacity-100 transition-opacity">
-        Copy
-      </span>
-    </div>
+    </button>
+
   </div>
 
 </div>
- 
         
         
 </div>
