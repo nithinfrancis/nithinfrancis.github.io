@@ -159,11 +159,11 @@
 <span>Call</span>
 </a>
 
-      <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+     <div class="flex flex-wrap justify-center lg:justify-start gap-4">
 
   <!-- Email -->
   <div class="copy-pill flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 bg-white shadow-sm">
-    
+
     <span class="material-symbols-outlined text-apple-black/40 text-[18px]">
       mail
     </span>
@@ -174,18 +174,29 @@
 
     <!-- Copy Button -->
     <button 
-      onclick="navigator.clipboard.writeText('nithin@example.com')"
-      class="ml-2 p-1.5 rounded-full hover:bg-black/5 transition">
-      <span class="material-symbols-outlined text-[16px] text-apple-blue">
+      onclick="copyText(this, 'nithin@example.com')"
+      class="relative ml-2 p-1.5 rounded-full hover:bg-black/5 transition active:scale-90">
+
+      <span class="material-symbols-outlined text-[16px] text-apple-blue transition">
         content_copy
       </span>
+
+      <!-- Small Toast -->
+      <span class="copied-toast absolute -top-8 left-1/2 -translate-x-1/2 
+                   text-[11px] px-2 py-1 rounded-md
+                   bg-black text-white opacity-0 scale-95
+                   transition-all duration-200 pointer-events-none">
+        Copied
+      </span>
+
     </button>
 
   </div>
 
+
   <!-- Phone -->
   <div class="copy-pill flex items-center gap-3 px-4 py-2 rounded-full border border-black/5 bg-white shadow-sm">
-    
+
     <span class="material-symbols-outlined text-apple-black/40 text-[18px]">
       call
     </span>
@@ -196,16 +207,49 @@
 
     <!-- Copy Button -->
     <button 
-      onclick="navigator.clipboard.writeText('+91 98765 43210')"
-      class="ml-2 p-1.5 rounded-full hover:bg-black/5 transition">
-      <span class="material-symbols-outlined text-[16px] text-apple-blue">
+      onclick="copyText(this, '+91 98765 43210')"
+      class="relative ml-2 p-1.5 rounded-full hover:bg-black/5 transition active:scale-90">
+
+      <span class="material-symbols-outlined text-[16px] text-apple-blue transition">
         content_copy
       </span>
+
+      <!-- Small Toast -->
+      <span class="copied-toast absolute -top-8 left-1/2 -translate-x-1/2 
+                   text-[11px] px-2 py-1 rounded-md
+                   bg-black text-white opacity-0 scale-95
+                   transition-all duration-200 pointer-events-none">
+        Copied
+      </span>
+
     </button>
 
   </div>
 
 </div>
+
+
+<script>
+  function copyText(button, text) {
+    navigator.clipboard.writeText(text);
+
+    const icon = button.querySelector("span.material-symbols-outlined");
+    const toast = button.querySelector(".copied-toast");
+
+    // Change icon to check
+    icon.textContent = "check";
+
+    // Show toast
+    toast.classList.remove("opacity-0", "scale-95");
+    toast.classList.add("opacity-100", "scale-100");
+
+    setTimeout(() => {
+      icon.textContent = "content_copy";
+      toast.classList.remove("opacity-100", "scale-100");
+      toast.classList.add("opacity-0", "scale-95");
+    }, 1500);
+  }
+</script>
         
         
 </div>
