@@ -145,42 +145,82 @@ function generateDart() {
 function generateClass(className, obj, classes, nullSafety, useFinal) {
     if (classes[className]) return;
 
-    let fields="", constructorParams="", fromJson="", toJson="", copyWithParams="", copyWithBody="";
+    let fields = "";
+    let constructorParams = "";
+    let fromJson = "";
+    let toJson = "";
+    let copyWithParams = "";
+    let copyWithBody = "";
 
     for (let key in obj) {
         const value = obj[key];
         const fieldName = key;
-        const type = resolveType(toPascalCase(key), value, classes, nullSafety, useFinal);
+        const type = resolveType(toPascalCase(key), value, classes);
 
         const finalKeyword = useFinal ? "final " : "";
         const nullable = nullSafety ? "?" : "";
 
+        // Fields
         fields += `  ${finalKeyword}${type}${nullable} ${fieldName};\n`;
+
+        // Constructor
         constructorParams += `    this.${fieldName},\n`;
 
+        // =========================
+        // FROM JSON
+        // =========================
+
         if (isCustomType(type)) {
+
             if (Array.isArray(value)) {
                 const inner = extractListType(type);
+
                 fromJson += `
       ${fieldName}: (json['${fieldName}'] as List<dynamic>?)
           ?.map((e) => ${inner}.fromJson(e))
           .toList(),`;
+
                 toJson += `
       '${fieldName}': ${fieldName}?.map((e) => e.toJson()).toList(),`;
+
             } else {
+
                 fromJson += `
       ${fieldName}: json['${fieldName}'] != null
           ? ${type}.fromJson(json['${fieldName}'])
           : null,`;
+
                 toJson += `
       '${fieldName}': ${fieldName}?.toJson(),`;
             }
+
         } else {
-            fromJson += `
+
+            // 🔥 Primitive Parsing Logic
+            if (type === "String") {
+                fromJson += `
+      ${fieldName}: parseString(json['${fieldName}']),`;
+            } else if (type === "int") {
+                fromJson += `
+      ${fieldName}: parseInt(json['${fieldName}']),`;
+            } else if (type === "double") {
+                fromJson += `
+      ${fieldName}: parseDouble(json['${fieldName}']),`;
+            } else if (type === "bool") {
+                fromJson += `
+      ${fieldName}: parseBool(json['${fieldName}']),`;
+            } else {
+                fromJson += `
       ${fieldName}: json['${fieldName}'] as ${type}${nullable},`;
+            }
+
             toJson += `
       '${fieldName}': ${fieldName},`;
         }
+
+        // =========================
+        // COPY WITH
+        // =========================
 
         copyWithParams += `${type}${nullable} ${fieldName}, `;
         copyWithBody += `
