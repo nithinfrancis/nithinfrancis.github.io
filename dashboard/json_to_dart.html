@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JSON to Dart Converter | Nithin Francis Tools</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "apple-gray": "#F5F5F7",
+                "apple-black": "#1D1D1F",
+                "apple-blue": "#0066CC",
+                "code-bg": "#F9FAFB",
+            },
+            fontFamily: {
+                "sans": ["Inter", "sans-serif"],
+                "mono": ["JetBrains Mono", "monospace"],
+            },
+        },
+    },
+}
+</script>
+
+<style>
+body {
+    background:#F5F5F7;
+    font-family:Inter, sans-serif;
+}
+.bento-card {
+    background:white;
+    border-radius:20px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.05);
+}
+.code-scroll::-webkit-scrollbar { width:6px; }
+.code-scroll::-webkit-scrollbar-thumb {
+    background:rgba(0,0,0,0.1);
+    border-radius:4px;
+}
+</style>
+</head>
+
+<body class="p-8">
+
+<div class="max-w-6xl mx-auto space-y-8">
+
+<div class="text-center space-y-2">
+<h1 class="text-4xl font-bold">JSON → Dart Converter</h1>
+<p class="text-gray-500">Flutter-ready | Nested Classes | Null Safety | copyWith</p>
+</div>
+
+<div class="bento-card p-6 space-y-4">
+
+<div class="grid md:grid-cols-3 gap-4">
+<div>
+<label class="text-xs font-bold uppercase text-gray-400">Main Class Name</label>
+<input id="className" type="text" value="UserModel"
+class="w-full mt-1 p-3 rounded-lg bg-gray-100 font-mono"/>
+</div>
+
+<div class="flex items-center gap-3 mt-6">
+<input id="nullSafetyToggle" type="checkbox" checked/>
+<label class="text-sm">Null Safety</label>
+</div>
+
+<div class="flex items-center gap-3 mt-6">
+<input id="finalToggle" type="checkbox" checked/>
+<label class="text-sm">Final Fields</label>
+</div>
+</div>
+
+<button id="convertBtn"
+class="bg-black text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition">
+Convert to Dart
+</button>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+
+<div class="bento-card p-4">
+<h3 class="font-semibold mb-2">Raw JSON</h3>
+<textarea id="jsonInput" class="w-full h-[400px] font-mono text-sm bg-gray-100 p-4 rounded-lg resize-none">
+{
+  "id": 1,
+  "name": "Nithin Francis",
+  "skills": [
+    {
+      "title": "Flutter",
+      "experience": 6
+    }
+  ]
+}
+</textarea>
+</div>
+
+<div class="bento-card p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-semibold">Generated Dart</h3>
+<button id="copyBtn" class="text-sm text-blue-600 font-semibold">
+Copy
+</button>
+</div>
+<pre id="outputCode" class="h-[400px] overflow-auto font-mono text-sm bg-gray-50 p-4 rounded-lg code-scroll"></pre>
+</div>
+
+</div>
+
+</div>
+
+<script>
+document.getElementById("convertBtn").addEventListener("click", generateDart);
+document.getElementById("copyBtn").addEventListener("click", copyCode);
+
+function generateDart() {
+    const jsonText = document.getElementById("jsonInput").value.trim();
+    const classNameInput = document.getElementById("className").value.trim();
+    const nullSafety = document.getElementById("nullSafetyToggle").checked;
+    const useFinal = document.getElementById("finalToggle").checked;
+    const output = document.getElementById("outputCode");
+
+    if (!jsonText) return output.textContent = "// Enter JSON";
+    if (!classNameInput) return output.textContent = "// Enter Main Class Name";
+
+    try {
+        const json = JSON.parse(jsonText);
+        const classes = {};
+        const mainClass = toPascalCase(classNameInput);
+        generateClass(mainClass, json, classes, nullSafety, useFinal);
+        output.textContent = Object.values(classes).reverse().join("\n\n");
+    } catch {
+        output.textContent = "// Invalid JSON";
+    }
+}
+
+function generateClass(className, obj, classes, nullSafety, useFinal) {
+    if (classes[className]) return;
+
+    let fields="", constructorParams="", fromJson="", toJson="", copyWithParams="", copyWithBody="";
+
+    for (let key in obj) {
+        const value = obj[key];
+        const fieldName = key;
+        const type = resolveType(toPascalCase(key), value, classes, nullSafety, useFinal);
+
+        const finalKeyword = useFinal ? "final " : "";
+        const nullable = nullSafety ? "?" : "";
+
+        fields += `  ${finalKeyword}${type}${nullable} ${fieldName};\n`;
+        constructorParams += `    this.${fieldName},\n`;
+
+        if (isCustomType(type)) {
+            if (Array.isArray(value)) {
+                const inner = extractListType(type);
+                fromJson += `
+      ${fieldName}: (json['${fieldName}'] as List<dynamic>?)
+          ?.map((e) => ${inner}.fromJson(e))
+          .toList(),`;
+                toJson += `
+      '${fieldName}': ${fieldName}?.map((e) => e.toJson()).toList(),`;
+            } else {
+                fromJson += `
+      ${fieldName}: json['${fieldName}'] != null
+          ? ${type}.fromJson(json['${fieldName}'])
+          : null,`;
+                toJson += `
+      '${fieldName}': ${fieldName}?.toJson(),`;
+            }
+        } else {
+            fromJson += `
+      ${fieldName}: json['${fieldName}'] as ${type}${nullable},`;
+            toJson += `
+      '${fieldName}': ${fieldName},`;
+        }
+
+        copyWithParams += `${type}${nullable} ${fieldName}, `;
+        copyWithBody += `
+      ${fieldName}: ${fieldName} ?? this.${fieldName},`;
+    }
+
+    const dartClass = `
+class ${className} {
+${fields}
+
+  ${className}({
+${constructorParams}  });
+
+  factory ${className}.fromJson(Map<String, dynamic> json) {
+    return ${className}(
+${fromJson}
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+${toJson}
+    };
+  }
+
+  ${className} copyWith({${copyWithParams}}) {
+    return ${className}(
+${copyWithBody}
+    );
+  }
+}
+`;
+
+    classes[className] = dartClass;
+}
+
+function resolveType(className, value, classes) {
+    if (typeof value === "string") return "String";
+    if (typeof value === "number") return Number.isInteger(value) ? "int" : "double";
+    if (typeof value === "boolean") return "bool";
+
+    if (Array.isArray(value)) {
+        if (value.length === 0) return "List<dynamic>";
+        const inner = resolveType(className, value[0], classes);
+        return `List<${inner}>`;
+    }
+
+    if (typeof value === "object" && value !== null) {
+        generateClass(className, value, classes, true, true);
+        return className;
+    }
+
+    return "dynamic";
+}
+
+function isCustomType(type) {
+    const primitives = ["String","int","double","bool","dynamic"];
+    if (primitives.includes(type)) return false;
+    if (type.startsWith("List<")) {
+        const inner = extractListType(type);
+        return !primitives.includes(inner);
+    }
+    return true;
+}
+
+function extractListType(type) {
+    return type.replace("List<","").replace(">","");
+}
+
+function toPascalCase(str) {
+    return str.replace(/[_-]/g,' ')
+              .replace(/\w\S*/g,t=>t.charAt(0).toUpperCase()+t.substr(1).toLowerCase())
+              .replace(/\s+/g,'');
+}
+
+function copyCode() {
+    const code = document.getElementById("outputCode").textContent;
+    navigator.clipboard.writeText(code);
+}
+</script>
+
+</body>
+</html>
