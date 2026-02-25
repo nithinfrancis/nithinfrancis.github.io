@@ -9,25 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-<script>
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "apple-gray": "#F5F5F7",
-        "apple-black": "#1D1D1F",
-        "apple-blue": "#0066CC",
-      },
-      fontFamily: {
-        "sans": ["Inter", "sans-serif"],
-        "mono": ["JetBrains Mono", "monospace"],
-      },
-    },
-  },
-};
-</script>
-
 <style>
 body { background:#F5F5F7; font-family:Inter, sans-serif; }
 .bento-card {
@@ -44,7 +25,6 @@ body { background:#F5F5F7; font-family:Inter, sans-serif; }
 </head>
 
 <body class="p-8">
-
 <div class="max-w-7xl mx-auto space-y-8">
 
 <div class="text-center space-y-2">
@@ -65,8 +45,9 @@ body { background:#F5F5F7; font-family:Inter, sans-serif; }
   </button>
 </div>
 
-<div class="grid md:grid-cols-2 gap-8">
+<div class="grid md:grid-cols-3 gap-8">
 
+<!-- JSON -->
 <div class="bento-card p-4">
 <h3 class="font-semibold mb-2">Raw JSON</h3>
 <textarea id="jsonInput"
@@ -88,12 +69,25 @@ class="w-full h-[500px] font-mono text-sm bg-gray-100 p-4 rounded-lg resize-none
 </textarea>
 </div>
 
+<!-- CONTROLLER -->
 <div class="bento-card p-4">
 <div class="flex justify-between items-center mb-2">
-<h3 class="font-semibold">Generated Code</h3>
-<button id="copyBtn" class="text-sm text-blue-600 font-semibold">Copy</button>
+<h3 class="font-semibold">Generated Controller</h3>
+<button onclick="copyCode('controllerOutput')"
+class="text-sm text-blue-600 font-semibold">Copy</button>
 </div>
-<pre id="outputCode"
+<pre id="controllerOutput"
+class="h-[500px] overflow-auto font-mono text-sm bg-gray-50 p-4 rounded-lg code-scroll"></pre>
+</div>
+
+<!-- VIEW -->
+<div class="bento-card p-4">
+<div class="flex justify-between items-center mb-2">
+<h3 class="font-semibold">Generated View</h3>
+<button onclick="copyCode('viewOutput')"
+class="text-sm text-blue-600 font-semibold">Copy</button>
+</div>
+<pre id="viewOutput"
 class="h-[500px] overflow-auto font-mono text-sm bg-gray-50 p-4 rounded-lg code-scroll"></pre>
 </div>
 
@@ -102,7 +96,6 @@ class="h-[500px] overflow-auto font-mono text-sm bg-gray-50 p-4 rounded-lg code-
 
 <script>
 document.getElementById("generateBtn").addEventListener("click", generateModule);
-document.getElementById("copyBtn").addEventListener("click", copyCode);
 
 function generateModule() {
 
@@ -134,8 +127,8 @@ function generateModule() {
     ? generateView(controllerName, listInfo)
     : "// No list detected in JSON. View not generated.";
 
-  document.getElementById("outputCode").textContent =
-      controllerCode + "\n\n\n" + viewCode;
+  document.getElementById("controllerOutput").textContent = controllerCode;
+  document.getElementById("viewOutput").textContent = viewCode;
 }
 
 function detectFirstList(json) {
@@ -146,8 +139,7 @@ function detectFirstList(json) {
 
       return {
         key: key,
-        type: capitalize(singular(key)),
-        itemSample: json[key][0]
+        type: capitalize(singular(key))
       };
     }
   }
@@ -199,9 +191,7 @@ class ${controllerName} extends GetxController {
 
 function generateView(controllerName, listInfo) {
 
-return `
-
-import 'package:flutter/material.dart';
+return `import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ${listInfo.type}ListScreen extends StatelessWidget {
@@ -217,6 +207,7 @@ class ${listInfo.type}ListScreen extends StatelessWidget {
         title: const Text("${capitalize(listInfo.key)}"),
       ),
       body: Obx(() {
+
         if (controller.isLoading.value) {
           return const Center(
             child: CircularProgressIndicator(),
@@ -278,8 +269,8 @@ function removeModel(name) {
   return name.replace(/Model$/i,'');
 }
 
-function copyCode() {
-  const code = document.getElementById("outputCode").textContent;
+function copyCode(id) {
+  const code = document.getElementById(id).textContent;
   navigator.clipboard.writeText(code);
   alert("Copied!");
 }
